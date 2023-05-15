@@ -34,7 +34,6 @@ function App() {
         onAddPopup={handleAddPlaceClick}
         onEditAvatar={handleEditAvatarClick}
         onCardClick={handleCardClick}
-        f
       />
       <Footer />
 

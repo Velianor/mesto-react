@@ -1,6 +1,6 @@
 import React from "react";
 import api from "../utils/Api";
-import Card from './Card';
+import Card from "./Card";
 
 function Main({ onEditAvatar, onAddPopup, onEditPopup, onCardClick }) {
   const [userName, setUserName] = React.useState("");
@@ -18,8 +18,6 @@ function Main({ onEditAvatar, onAddPopup, onEditPopup, onCardClick }) {
       })
       .catch((err) => console.log(err));
   }, []);
-
-
 
   return (
     <main>
@@ -43,15 +41,9 @@ function Main({ onEditAvatar, onAddPopup, onEditPopup, onCardClick }) {
         ></button>
       </section>
       <section className="elements">
-    
-                    {cards.map((card) => (
-                        <Card
-                            key={card._id}
-                            card={card}
-                            onCardClick={onCardClick}
-                        />
-                    ))}
-                    
+        {cards.map((card) => (
+          <Card key={card._id} card={card} onCardClick={onCardClick} />
+        ))}
       </section>
     </main>
   );
