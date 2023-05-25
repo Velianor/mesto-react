@@ -1,6 +1,6 @@
 import React from "react";
 
-function PopupWithForm({ isOpen, onClose,  title, children, buttonText }) {
+function PopupWithForm({ isOpen, onClose,  title, children, buttonText, onSubmit }) {
   return (
     <>
       <div
@@ -14,12 +14,11 @@ function PopupWithForm({ isOpen, onClose,  title, children, buttonText }) {
             aria-label="Зыкрыть форму"
           />
           <h2 className="popup__title">{title}</h2>
-          <form className="popup__form" name="nameForm">
+          <form className="popup__form" name="nameForm" onSubmit={onSubmit}>
             {children}
             <button
               type="submit"
               className="popup__button-save"
-              aria-label="Сохранение данных"
             >
               {buttonText}
             </button>

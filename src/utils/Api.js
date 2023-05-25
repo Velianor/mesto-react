@@ -1,6 +1,4 @@
-import React from "react";
-
- class Api {
+class Api {
   constructor(config) {
     this._baseUrl = config.baseUrl;
     this._headers = config.headers;
@@ -28,14 +26,14 @@ import React from "react";
     }).then(this._checkResponse);
   }
 
-  changeUserInfo(data) {
+  changeUserInfo(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name: data.username,
-        about: data.info,
-      })
+        name: name,
+        about: about,
+      }),
     }).then(this._checkResponse);
   }
 
@@ -46,17 +44,17 @@ import React from "react";
       body: JSON.stringify({
         name: data.name,
         link: data.link,
-      })
+      }),
     }).then(this._checkResponse);
   }
 
-  changeAvatar(data) {
+  changeAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        avatar: data.avatar,
-      })
+        avatar: avatar,
+      }),
     }).then(this._checkResponse);
   }
 
@@ -66,17 +64,9 @@ import React from "react";
       headers: this._headers,
     }).then(this._checkResponse);
   }
-
-  addLike(cardId) {
+  changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: "PUT",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
-
-  removeLike(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-      method: "DELETE",
+      method: isLiked ? "PUT" : "DELETE",
       headers: this._headers,
     }).then(this._checkResponse);
   }
