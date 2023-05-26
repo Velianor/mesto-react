@@ -21,7 +21,6 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
     };
 
     return (
-        <CurrentUserContext.Provider value={currentUser}>
         <div className="element">
             {isOwn && (<button type="button" className="element__delete" onClick={handleDeleteClick} />)}
                 <img src={card.link} alt={card.name} onClick={handleClick} className="element__img" />
@@ -33,7 +32,6 @@ function Card({card, onCardClick, onCardLike, onCardDelete}) {
                 </button>
             </div>
         </div>
-        </CurrentUserContext.Provider>
     )
 };
 

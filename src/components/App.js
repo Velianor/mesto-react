@@ -79,7 +79,8 @@ function App() {
 
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-    });
+    })
+    .catch(err => console.log(`Ошибка лайка: ${err}`))
   }
 
   function handleAddPlaceSubmit(card) {
@@ -99,7 +100,8 @@ function App() {
     api.deleteCard(card._id).then(() => {
       setCards((cards) => cards.filter((c) => c._id !== card._id));
       closeAllPopups();
-    });
+    })
+    .catch(err => console.log(`Ошибка при удалении: ${err}`))
   }
 
   return (
